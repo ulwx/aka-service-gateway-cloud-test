@@ -1,0 +1,35 @@
+server:
+  port: 8181
+  servlet:
+    context-path: /gw
+spring:
+  application:
+    name: aka-service-gateway-cloud-test
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.137.199:8848 # nacos的服务端地址
+        file-extension: yml # 配置文件格式
+        group: AKA_CLOUD_GROUP
+        namespace: 607bcdec-963d-4ae0-b902-da0f469d9dcf
+      discovery:
+        server-addr: 192.168.137.199:8848
+        group: AKA_CLOUD_GROUP
+        namespace: 607bcdec-963d-4ae0-b902-da0f469d9dcf
+    sentinel:
+      datasource:
+         ds:
+           nacos:
+             server-addr: 192.168.137.199:8848
+             group-id: SENTINEL_GROUP
+             dataId: ${spring.application.name}-gateway-flow-rules
+             data-type: json
+             rule-type: gw-flow
+      transport:
+        port: 8919
+        dashboard: 192.168.137.199:8380
+      filter:
+        enabled: false
+
+  profiles:
+        active: dev # 环境标识

@@ -1,0 +1,68 @@
+spring:
+  devtools:
+    livereload:
+      port: 35732
+  cloud:
+    gateway:
+      httpclient:
+        pool:
+          max-idle-time: 5000
+          max-connections: 30
+      default-filters:
+        - PreserveHostHeader
+        - StripPrefix=1
+      routes:
+        - id: "aka-services"
+          uri: lb://{serviceName}
+          predicates:
+            - Path=${server.servlet.context-path}/{serviceName}/**
+
+aka:
+  gateway:
+    filters:
+      myfilter:
+        #使用ant path路径风格匹配
+        matcher:
+          #哪些URL需要进行经过此过滤器
+          paths:
+            - /**
+        verify-config:
+          token-type: jwt
+          #哪些URL不需要检测token是否存在和有效，使用ant path路径风格匹配
+          exclude-paths:
+            # - abc.action
+          #用于生成token的key
+          secret: hong1mu2zhi3ruan4jexge_33@#&@sdffian5
+          access-token:
+            #携带acess token的参数名称
+            param-name: access_token
+            #秒为单位
+            expire: 30
+          refresh-token:
+            #携带refresh token的参数名称
+            param-name: refresh_token
+            #秒为单位
+            expire: 60
+          #请求里携带acess-token和 refresh-token的媒介，有header,query,cookie，可以有多个，以英文逗号分隔
+          token-in-request:
+            in: header,cookie,query
+          #响应里携带token的媒介，有header,cookie,body。可以设置多个，以英文逗号分割。当某接口认证成功后会写入
+          token-in-response:
+            in: header,cookie,body
+        login:
+          - url: /**/usermod-User-loginJSON.action
+            #需要实现com.github.ulwx.aka.gateway.filters.TokenBuilder接口，
+            #根据转发的请求或响应信息生成token信息（access-token，refresh-token等）
+            token-builder-class: com.example.gateway.MyTokenBuilder
+        logout:
+          - url: /**/usermod-User-logoutJSON.action
+            #获取userid，sourceid，refresh-token信息，ll帮助清理存储里的token
+            #需实现com.github.ulwx.aka.gateway.filters.FetchLogoutCondition接口
+            fetch-logout-condition: com.example.gateway.MyFetchLogoutCondition
+
+    store-config:
+      memory:
+        enable: true
+
+
+
