@@ -18,13 +18,20 @@ spring:
         namespace: 607bcdec-963d-4ae0-b902-da0f469d9dcf
     sentinel:
       datasource:
-         ds:
+         ds-gw-flow:
            nacos:
              server-addr: 192.168.137.199:8848
              group-id: SENTINEL_GROUP
              dataId: ${spring.application.name}-gateway-flow-rules
              data-type: json
              rule-type: gw-flow
+         ds-api:
+           nacos:
+             server-addr: 192.168.137.199:8848
+             group-id: SENTINEL_GROUP
+             dataId: ${spring.application.name}-gateway-api-rules
+             data-type: json
+             rule-type: gw-api-group
       transport:
         port: 8919
         dashboard: 192.168.137.199:8380

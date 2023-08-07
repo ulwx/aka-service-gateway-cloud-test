@@ -14,11 +14,6 @@
         <relativePath>../aka-common-parent/pom.xml</relativePath>
     </parent>
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.csp</groupId>-->
-<!--            <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>-->
-<!--            <version>1.8.6</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-datasource-nacos</artifactId>
@@ -58,6 +53,17 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.apache.skywalking</groupId>-->
+<!--            <artifactId>apm-toolkit-logback-1.x</artifactId>-->
+<!--            <version>8.16.0</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.skywalking</groupId>-->
+<!--            <artifactId>apm-toolkit-trace</artifactId>-->
+<!--            <version>8.16.0</version>-->
+<!--        </dependency>-->
     </dependencies>
 
 
