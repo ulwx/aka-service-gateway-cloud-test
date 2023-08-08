@@ -54,10 +54,14 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.skywalking</groupId>
+            <artifactId>apm-toolkit-logback-1.x</artifactId>
+            <version>8.16.0</version>
+        </dependency>
 <!--        <dependency>-->
-<!--            <groupId>org.apache.skywalking</groupId>-->
-<!--            <artifactId>apm-toolkit-logback-1.x</artifactId>-->
-<!--            <version>8.16.0</version>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-tomcat</artifactId>-->
 <!--        </dependency>-->
 <!--        <dependency>-->
 <!--            <groupId>org.apache.skywalking</groupId>-->

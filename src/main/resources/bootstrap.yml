@@ -2,6 +2,8 @@ server:
   port: 8181
   servlet:
     context-path: /gw
+logging:
+  config: classpath:logback-spring.xml
 spring:
   application:
     name: aka-service-gateway-cloud-test
