@@ -2,7 +2,7 @@ pipeline {
     agent any
     //这里导入maven，名字就是在全局工具配置中配置的，如下所示
     tools{
-        maven 'maven_3.6.3'
+        maven 'maven_3.9.4'
     }
     stages {
        stage('拉取代码') {
