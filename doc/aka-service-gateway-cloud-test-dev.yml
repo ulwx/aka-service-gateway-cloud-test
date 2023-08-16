@@ -6,7 +6,7 @@ spring:
     gateway:
       httpclient:
         pool:
-          max-idle-time: 5000
+          max-idle-time: 15000
           max-connections: 30
       default-filters:
         - PreserveHostHeader

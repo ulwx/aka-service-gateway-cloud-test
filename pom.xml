@@ -6,11 +6,10 @@
     <artifactId>aka-service-gateway-cloud-test</artifactId>
     <name>aka-service-gateway-cloud-test</name>
     <description>aka-service-gateway-cloud-test</description>
-    <version>2.1-SNAPSHOT</version>
     <parent>
         <groupId>com.github.ulwx</groupId>
         <artifactId>aka-common-parent</artifactId>
-        <version>2.0</version>
+        <version>2.1-SNAPSHOT</version>
         <relativePath>../aka-common-parent/pom.xml</relativePath>
     </parent>
     <properties>
@@ -34,6 +33,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
+
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -41,7 +41,6 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>com.github.ulwx</groupId>
             <artifactId>aka-service-gateway-starter</artifactId>
@@ -57,15 +56,21 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.skywalking</groupId>
-            <artifactId>apm-toolkit-logback-1.x</artifactId>
-            <version>8.16.0</version>
-        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <excludes>
+                        <exclude>*.xml</exclude>
+                        <exclude>aka*.properties</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
