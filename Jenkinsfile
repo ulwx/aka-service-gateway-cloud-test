@@ -22,7 +22,7 @@ pipeline {
         }
         stage('把jar包构建为docker镜像并运行') {
             steps {
-                echo '运行成功'
+                echo '${currentBuild.projectName}运行成功'
             }
         }
     }
