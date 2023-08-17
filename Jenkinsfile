@@ -22,11 +22,13 @@ pipeline {
         }
         stage('把jar包构建为docker镜像并运行') {
             steps {
-                def username = 'Jenkins'
-                echo 'Hello Mr. ${username}'
-                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                echo "Running ${env.BUILD_URL} on ${env.JAVA_HOME}"
-                echo '${currentBuild.projectName}运行成功'
+                script {
+                    def username = 'Jenkins'
+                    echo 'Hello Mr. ${username}'
+                    echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                    echo "Running ${env.BUILD_URL} on ${env.JAVA_HOME}"
+                    echo '${currentBuild.projectName}运行成功'
+                   }
             }
         }
     }
