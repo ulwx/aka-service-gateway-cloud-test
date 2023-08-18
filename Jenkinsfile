@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    //这里导入maven，名字就是在全局工具配置中配置的，如下所示
     tools{
         maven 'maven_3.9.4'
     }
@@ -13,24 +12,12 @@ pipeline {
         }
         stage('执行构建') {
             steps {
-               //先运行一下maven版本，看看maven是否配置好了， sh 是指执行shell脚本
                 sh "mvn --version"
-               // 如果maven可以运行，那么执行以下代码，这里需要注意一下，pom.xml文件是否在你创建的任务目录下
+
                 sh "mvn clean package"
                 echo '构建完成'
             }
         }
-        stage('把jar包构建为docker镜像并运行') {
-            steps {
-                script {
-                    def username = "Jenkins"
-                    echo "Hello Mr. ${username}"
-                     echo "Running branch: ${env.BRANCH_NAME} , changeid: ${env.CHANGE_ID}"
-                    echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                    echo "Running ${env.BUILD_URL} on ${env.JAVA_HOME}"
-                    echo "${currentBuild.projectName}运行成功"
-                   }
-            }
-        }
+
     }
 }
