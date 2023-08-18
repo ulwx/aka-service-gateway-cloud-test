@@ -9,7 +9,7 @@ import javax.annotation.PreDestroy;
 @Component
 public class LogHooks {
 
-    private static final String KEY = "logMdc";
+    private static final String KEY = "mylogMdc";
 
     @PostConstruct
     @SuppressWarnings("unchecked")
